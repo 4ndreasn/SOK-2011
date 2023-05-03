@@ -266,8 +266,8 @@ suppressPackageStartupMessages(library(scales))
 df_growth2019_n <- df_growth2019[complete.cases(df_growth2019$region,df_growth2019$poptot, df_growth2019$avg_p, df_growth2019$gdppc),] #Her tar jeg vekk land som mangler observasjoner. Dette gjør grafen penere.  
 
 plot1 <- ggplot(df_growth2019_n, aes(x = avg_p , y = ln_gdppc, na.rm = TRUE)) +
-  xlab("Befolkningsvekst") + # Beskrivelse for x-akselen
-  ylab("BNP per innbygger") + # Beskrivelse for y-akselen
+  xlab("Gjennomsnittlig Befolkningsvekst 2000-2019") + # Beskrivelse for x-akselen
+  ylab("Naturlig logaritmen av BNP per innbygger") + # Beskrivelse for y-akselen
   theme_minimal(base_size = 14, base_family = "Georgia") + # Tekststørrelse og font
   geom_point(aes(size = poptot, color = region), alpha = 0.8) + # Størrelse (farge) på bobblene avhenger befolkningsstørrelse (region)
   scale_x_continuous(labels = dollar)  + # Legg til et dollar tegn til y-akselen
@@ -282,7 +282,7 @@ plot1
 
 plot2 <- ggplot(df_growth2019_n, aes(x = avg_educ , y = avg_gdpgrowth, na.rm = TRUE)) +
   xlab("Utdanning i antall år") + # Beskrivelse for x-akselen
-  ylab("Årlig vekstrate i BNP per innbygger") + # Beskrivelse for y-akselen
+  ylab(" BNP per innbygger") + # Beskrivelse for y-akselen
   theme_minimal(base_size = 14, base_family = "Georgia") + # Tekststørrelse og font
   geom_point(aes(size = poptot, color = region), alpha = 0.8) + # Størrelse (farge) på bobblene avhenger befolkningsstørrelse (region)
   scale_x_continuous(labels = dollar)  + # Legg til et dollar tegn til y-akselen
@@ -295,7 +295,7 @@ plot2 <- ggplot(df_growth2019_n, aes(x = avg_educ , y = avg_gdpgrowth, na.rm = T
 plot2
 
 plot3 <- ggplot(df_growth2019_n, aes(x = avg_educ , y = ln_gdppc, na.rm = TRUE)) +
-  xlab("Humankapital") + # Beskrivelse for x-akselen
+  xlab("År med utdanning") + # Beskrivelse for x-akselen
   ylab("BNP per innbygger") + # Beskrivelse for y-akselen
   theme_minimal(base_size = 14, base_family = "Georgia") + # Tekststørrelse og font
   geom_point(aes(size = poptot, color = region), alpha = 0.8) + # Størrelse (farge) på bobblene avhenger befolkningsstørrelse (region)
@@ -310,8 +310,8 @@ plot3
 
 
 plot4 <- ggplot(df_growth2019_n, aes(x = avg_nsy , y = ln_gdppc, na.rm = TRUE)) +
-  xlab("Sparing med logaritmen av BNP") + # Beskrivelse for x-akselen
-  ylab("BNP per innbygger") + # Beskrivelse for y-akselen
+  xlab("Sparing med  % andel av BNI") + # Beskrivelse for x-akselen
+  ylab("Naturlig logaritmen av BNP per innbygger") + # Beskrivelse for y-akselen
   theme_minimal(base_size = 14, base_family = "Georgia") + # Tekststørrelse og font
   geom_point(aes(size = poptot, color = region), alpha = 0.8) + # Størrelse (farge) på bobblene avhenger befolkningsstørrelse (region)
   scale_x_continuous(labels = dollar)  + # Legg til et dollar tegn til y-akselen
@@ -326,8 +326,8 @@ plot4
 
 
 plot5 <- ggplot(df_growth2019_n, aes(x = avg_nsy , y = avg_gdpgrowth, na.rm = TRUE)) +
-  xlab("Sparing med gjennomsnittl. vekst i BNP") + # Beskrivelse for x-akselen
-  ylab("BNP per innbygger") + # Beskrivelse for y-akselen
+  xlab("Sparing med % andel av BNI") + # Beskrivelse for x-akselen
+  ylab("Naturlig logaritmen av BNP per innbygger") + # Beskrivelse for y-akselen
   theme_minimal(base_size = 14, base_family = "Georgia") + # Tekststørrelse og font
   geom_point(aes(size = poptot, color = region), alpha = 0.8) + # Størrelse (farge) på bobblene avhenger befolkningsstørrelse (region)
   scale_x_continuous(labels = dollar)  + # Legg til et dollar tegn til y-akselen
@@ -375,5 +375,4 @@ view(no_outliers)
 
 model2 <- lm(avg_gdpgrowth ~ avg_educ + avg_gi + avg_n + avg_nry + avg_nsy + avg_p + avg_gx, data= no_outliers)
 tab_model(model2)
-
 
